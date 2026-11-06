@@ -1,77 +1,174 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GYM PLANNER</title>
+    <meta name="theme-color" content="#080d18">
+    <title>GYM PLANNER — План тренировок</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="header">
-    <div class="logo">GYM<span>PLANNER</span></div>
-    <div class="header-right">МОЙ ТРЕНИРОВОЧНЫЙ ПЛАН</div>
+    <div class="container header-content">
+        <a class="logo" href="#">GYM<span>PLANNER</span></a>
+        <div class="header-label">МОЙ ТРЕНИРОВОЧНЫЙ ПЛАН</div>
+    </div>
 </header>
 
 <main class="container">
 
     <section class="welcome">
-        <div>
-            <p class="subtitle">ТВОЯ ЦЕЛЬ — ТВОЙ РЕЗУЛЬТАТ</p>
-            <h1>Стань сильнее<br><span>каждый день.</span></h1>
-            <p class="description">Тренировочный календарь · Ноябрь 2026</p>
+        <div class="welcome-content">
+            <div class="eyebrow">ТВОЙ ПУТЬ К РЕЗУЛЬТАТУ</div>
+            <h1>СТАНЬ СИЛЬНЕЕ<br><span>КАЖДЫЙ ДЕНЬ</span></h1>
+            <p>Регулярность важнее идеального результата. Главное — продолжать.</p>
+            <a href="#calendar" class="main-button">МОЙ КАЛЕНДАРЬ <span>→</span></a>
         </div>
-        <div class="welcome-icon">🏋️</div>
+        <div class="welcome-decoration">GYM</div>
     </section>
 
     <section class="stats">
         <div class="stat-card">
-            <p>Тренировок выполнено</p>
-            <h2 id="completed">0 / 8</h2>
+            <div class="stat-label">ВЫПОЛНЕНО ТРЕНИРОВОК</div>
+            <div class="stat-value"><span id="completedCount">0</span><small> / 8</small></div>
         </div>
         <div class="stat-card">
-            <p>Прогресс</p>
-            <h2 id="progress">0%</h2>
+            <div class="stat-label">ОБЩИЙ ПРОГРЕСС</div>
+            <div class="stat-value"><span id="progressPercent">0</span><small>%</small></div>
+            <div class="progress-track">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
         </div>
         <div class="stat-card">
-            <p>Вес тела</p>
-            <h2>77 <small>кг</small></h2>
+            <div class="stat-label">МЕСЯЦ</div>
+            <div class="stat-value">НОЯБРЬ <small>2026</small></div>
         </div>
     </section>
 
-    <section class="calendar-section">
+    <section class="section" id="calendar">
         <div class="section-heading">
             <div>
-                <p class="subtitle">ТВОЙ ГРАФИК</p>
-                <h2>Ноябрь 2026</h2>
+                <div class="eyebrow">РАСПИСАНИЕ</div>
+                <h2>КАЛЕНДАРЬ ТРЕНИРОВОК</h2>
             </div>
-            <div class="legend">
-                <span class="blue-dot"></span> Тренировка
-                <span class="gray-dot"></span> Отдых
-            </div>
+            <div class="month-label">НОЯБРЬ 2026</div>
         </div>
 
-        <div class="calendar" id="calendar"></div>
+        <div class="calendar-card">
+            <div class="calendar-weekdays">
+                <span>ПН</span><span>ВТ</span><span>СР</span>
+                <span>ЧТ</span><span>ПТ</span><span>СБ</span><span>ВС</span>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+
+            <div class="calendar-legend">
+                <span><i class="legend-dot training-dot"></i> Тренировка</span>
+                <span><i class="legend-dot rest-dot"></i> Отдых</span>
+                <span><i class="legend-dot work-dot"></i> Работа</span>
+                <span><i class="legend-dot done-dot"></i> Выполнено</span>
+            </div>
+        </div>
     </section>
 
-    <section class="workout-section">
+    <section class="section workout-section" id="workout">
         <div class="section-heading">
             <div>
-                <p class="subtitle">ПЛАН НА ДЕНЬ</p>
-                <h2 id="workout-title">Выбери тренировку</h2>
+                <div class="eyebrow">ТВОЯ ПРОГРАММА</div>
+                <h2 id="workoutTitle">ВЫБЕРИ ДЕНЬ</h2>
             </div>
+            <div class="workout-date" id="workoutDate">Нажми на день в календаре</div>
         </div>
 
-        <div id="workout-content" class="workout-content">
-            <p>Нажми на дату в календаре, чтобы увидеть упражнения.</p>
+        <div class="empty-state" id="emptyState">
+            <div class="empty-icon">📅</div>
+            <h3>Выбери дату тренировки</h3>
+            <p>Нажми на выделенный день в календаре, чтобы увидеть упражнения и видеоинструкции.</p>
+        </div>
+
+        <div id="workoutContent" class="workout-content hidden">
+
+            <div class="workout-intro">
+                <div>
+                    <span class="workout-type" id="workoutType">UPPER BODY</span>
+                    <h3 id="workoutSubtitle">ТРЕНИРОВКА ВЕРХА ТЕЛА</h3>
+                    <p>Выполняй упражнения спокойно, следи за техникой и не гонись за весом.</p>
+                </div>
+                <div class="workout-number" id="workoutNumber">01</div>
+            </div>
+
+            <div class="warmup-card">
+                <div class="warmup-icon">🏃</div>
+                <div class="warmup-info">
+                    <span class="small-label">ЭТАП 1 · РАЗМИНКА</span>
+                    <h3>Беговая дорожка</h3>
+                    <p>7 минут лёгкой ходьбы или спокойного бега. Не начинай с максимальной скорости.</p>
+                </div>
+                <div class="duration">7 МИН</div>
+            </div>
+
+            <div class="exercise-heading">
+                <h3>СИЛОВАЯ ЧАСТЬ</h3>
+                <span>ОТМЕЧАЙ ВЫПОЛНЕННЫЕ УПРАЖНЕНИЯ</span>
+            </div>
+
+            <div id="exerciseList" class="exercise-list"></div>
+
+            <div class="cooldown-card">
+                <div class="warmup-icon">🚶</div>
+                <div class="warmup-info">
+                    <span class="small-label">ЗАВЕРШЕНИЕ</span>
+                    <h3>Спокойная ходьба</h3>
+                    <p>5 минут на дорожке в комфортном темпе, чтобы постепенно снизить нагрузку.</p>
+                </div>
+                <div class="duration">5 МИН</div>
+            </div>
+
+            <div class="workout-footer">
+                <div>
+                    <h3>Закончил тренировку?</h3>
+                    <p>Отметь её завершённой, чтобы обновить статистику.</p>
+                </div>
+                <button id="completeButton" class="complete-button" onclick="completeWorkout()">
+                    ЗАВЕРШИТЬ ТРЕНИРОВКУ
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="section tips-section">
+        <div class="eyebrow">НЕ ЗАБЫВАЙ</div>
+        <h2>ПРАВИЛА ТРЕНИРОВОК</h2>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <span>01</span>
+                <h3>Техника важнее веса</h3>
+                <p>Сначала научись правильно выполнять движение. Не увеличивай вес в ущерб технике.</p>
+            </div>
+            <div class="tip-card">
+                <span>02</span>
+                <h3>Не торопись</h3>
+                <p>Отдыхай между подходами примерно 60–120 секунд или дольше, если нужно восстановить дыхание.</p>
+            </div>
+            <div class="tip-card">
+                <span>03</span>
+                <h3>Слушай своё тело</h3>
+                <p>Острая боль — повод остановиться. Не пытайся выполнить упражнение через боль.</p>
+            </div>
         </div>
     </section>
 
 </main>
 
-<footer>
-    GYM PLANNER © 2026
+<footer class="footer">
+    <div class="container">
+        <div class="logo">GYM<span>PLANNER</span></div>
+        <p>ТВОЙ ПЛАН. ТВОЙ ПРОГРЕСС. ТВОЙ РЕЗУЛЬТАТ.</p>
+        <small>© 2026 GYM PLANNER</small>
+    </div>
 </footer>
 
 <script src="script.js"></script>
