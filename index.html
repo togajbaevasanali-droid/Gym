@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GYM PLANNER</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">GYM<span>PLANNER</span></div>
+    <div class="header-right">МОЙ ТРЕНИРОВОЧНЫЙ ПЛАН</div>
+</header>
+
+<main class="container">
+
+    <section class="welcome">
+        <div>
+            <p class="subtitle">ТВОЯ ЦЕЛЬ — ТВОЙ РЕЗУЛЬТАТ</p>
+            <h1>Стань сильнее<br><span>каждый день.</span></h1>
+            <p class="description">Тренировочный календарь · Ноябрь 2026</p>
+        </div>
+        <div class="welcome-icon">🏋️</div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-card">
+            <p>Тренировок выполнено</p>
+            <h2 id="completed">0 / 8</h2>
+        </div>
+        <div class="stat-card">
+            <p>Прогресс</p>
+            <h2 id="progress">0%</h2>
+        </div>
+        <div class="stat-card">
+            <p>Вес тела</p>
+            <h2>77 <small>кг</small></h2>
+        </div>
+    </section>
+
+    <section class="calendar-section">
+        <div class="section-heading">
+            <div>
+                <p class="subtitle">ТВОЙ ГРАФИК</p>
+                <h2>Ноябрь 2026</h2>
+            </div>
+            <div class="legend">
+                <span class="blue-dot"></span> Тренировка
+                <span class="gray-dot"></span> Отдых
+            </div>
+        </div>
+
+        <div class="calendar" id="calendar"></div>
+    </section>
+
+    <section class="workout-section">
+        <div class="section-heading">
+            <div>
+                <p class="subtitle">ПЛАН НА ДЕНЬ</p>
+                <h2 id="workout-title">Выбери тренировку</h2>
+            </div>
+        </div>
+
+        <div id="workout-content" class="workout-content">
+            <p>Нажми на дату в календаре, чтобы увидеть упражнения.</p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    GYM PLANNER © 2026
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
